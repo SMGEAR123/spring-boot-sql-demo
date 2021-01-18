@@ -35,8 +35,10 @@ public class ItemsController {
 		itemRepository.save(item);
 	}
 	
-	@GetMapping("/${id}")
+	@GetMapping("/{id}")
 	public Item get(@PathVariable("id") long id) {
 		return itemRepository.getOne(id);// Search for one item based on the Id.
 	}
+	
+	
 }

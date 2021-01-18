@@ -8,7 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity // Declare an Entity Class
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})// Ignoring hibernate implementations that would otherwise be needed for this class
 public class Item {
 	
 	@Id
@@ -24,6 +28,7 @@ public class Item {
 	private int priority;
 	private boolean favorited;
 	private int quantity;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-dd-yyyy")// Makes passing date data easier than the standard format.
 	private Date datePosted;
 	
 	public String getName() {
