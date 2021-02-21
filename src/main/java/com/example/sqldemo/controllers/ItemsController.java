@@ -47,9 +47,6 @@ public class ItemsController {
 		return itemRepository.findAll()
 			.stream()
 			.filter(item -> {
-				System.out.println(item);
-				System.out.println(item.getCategory().toLowerCase());
-				System.out.println(item.toString());
 				return (item.getCategory().toLowerCase().equals(category.toLowerCase()));
 			})
 			.collect(Collectors.toList());
