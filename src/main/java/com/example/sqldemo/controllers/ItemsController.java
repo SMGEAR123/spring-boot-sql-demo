@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import com.example.sqldemo.models.Item;
 import com.example.sqldemo.repositories.ItemRepository;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/v1/items")
 public class ItemsController {
 	@Autowired
@@ -27,7 +29,6 @@ public class ItemsController {
 	@GetMapping
 	public List<Item> list() {
 		return itemRepository.findAll();// Selects all on the item table
-
 	}
 	
 	@PostMapping
