@@ -3,6 +3,7 @@ package com.example.sqldemo.models;
 import java.math.BigDecimal;
 import java.sql.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -102,5 +103,10 @@ public class Item {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	@Override
+	public String toString() {
+		return "{name: " + this.getName() + ", category: " + this.getCategory() + ", Description: " + this.getDescription() + " }";
 	}
 }

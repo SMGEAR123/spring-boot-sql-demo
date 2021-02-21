@@ -2,6 +2,7 @@ package com.example.sqldemo.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,6 +39,20 @@ public class ItemsController {
 	@GetMapping("/{id}")
 	public Item get(@PathVariable("id") long id) {
 		return itemRepository.getOne(id);// Search for one item based on the Id.
+	}
+	
+	@GetMapping("/category/{category}")
+	public List<Item> get(@PathVariable("category") String category) {
+		System.out.println(category);
+		return itemRepository.findAll()
+			.stream()
+			.filter(item -> {
+				System.out.println(item);
+				System.out.println(item.getCategory().toLowerCase());
+				System.out.println(item.toString());
+				return (item.getCategory().toLowerCase().equals(category.toLowerCase()));
+			})
+			.collect(Collectors.toList());
 	}
 	
 	
